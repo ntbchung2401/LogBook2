@@ -51,9 +51,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String url = inputURL.getText().toString().trim();
                 if(url.length() !=0 ) {
+                    Glide.with(MainActivity.this)
+                            .load(url)
+                            .apply(new RequestOptions().transform(new CenterCrop()).transform(new RoundedCorners(12)))
+                            .into(imageView);
                 imageList.add((url));
-                }
                 Toast.makeText(MainActivity.this, "Add successfully!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
